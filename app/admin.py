@@ -9,7 +9,10 @@ from .models import (
     AboutTogether,
     AboutBest,
     AboutSupport,
-    AboutUs
+    AboutUs,
+    LatestCourses,
+    EventsBlocks,
+    FactsBlocks
     ) 
 
 admin.site.register(HeaderText)
@@ -20,5 +23,6 @@ admin.site.register(AboutTogether)
 admin.site.register(AboutBest)
 admin.site.register(AboutSupport)
 admin.site.register(AboutUs)
-
-
+admin.site.register(LatestCourses)
+admin.site.register(EventsBlocks)
+admin.site.register(FactsBlocks)

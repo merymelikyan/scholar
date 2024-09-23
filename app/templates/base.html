@@ -239,8 +239,8 @@ https://templatemo.com/tm-586-scholar
       <div class="row">
         <div class="col-lg-12 text-center">
           <div class="section-heading">
-            <h6>Latest Courses</h6>
-            <h2>Latest Courses</h2>
+            <h6>{{latest_courses.title}}</h6>
+            <h2>{{latest_courses.description}}</h2>
           </div>
         </div>
       </div>
@@ -249,30 +249,33 @@ https://templatemo.com/tm-586-scholar
           <a class="is_active" href="#!" data-filter="*">Show All</a>
         </li>
         <li>
-          <a href="#!" data-filter=".design">Webdesign</a>
+          <a href="#!" data-filter=".design">{{latest_courses.category1}}</a>
         </li>
         <li>
-          <a href="#!" data-filter=".development">Development</a>
+          <a href="#!" data-filter=".development">{{latest_courses.category2}}t</a>
         </li>
         <li>
-          <a href="#!" data-filter=".wordpress">Wordpress</a>
+          <a href="#!" data-filter=".wordpress">{{latest_courses.category3}}</a>
         </li>
       </ul>
       <div class="row event_box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design">
-          <div class="events_item">
-            <div class="thumb">
-              <a href="#"><img src="{% static "images/course-01.jpg" %}" alt=""></a>
-              <span class="category">Webdesign</span>
-              <span class="price"><h6><em>$</em>160</h6></span>
-            </div>
-            <div class="down-content">
-              <span class="author">Stella Blair</span>
-              <h4>Learn Web Design</h4>
+        
+        {% for e in events_blocks %}  
+          <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design">
+            <div class="events_item">
+              <div class="thumb">
+                <a href="#"><img src="{{e.image.url}}" alt=""></a>
+                <span class="category">{{e.category}}</span>
+                <span class="price"><h6><em>$</em>{{e.price}}</h6></span>
+              </div>
+              <div class="down-content">
+                <span class="author">{{e.title1}}</span>
+                <h4>{{e.title2}}</h4>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6  development">
+        {%endfor %}
+        {% comment %} <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6  development">
           <div class="events_item">
             <div class="thumb">
               <a href="#"><img src="{% static "images/course-02.jpg" %}" alt=""></a>
@@ -336,7 +339,8 @@ https://templatemo.com/tm-586-scholar
               <h4>Full Stack Developer</h4>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
+      
       </div>
     </div>
   </section>
@@ -347,13 +351,20 @@ https://templatemo.com/tm-586-scholar
         <div class="col-lg-12">
           <div class="wrapper">
             <div class="row">
-              <div class="col-lg-3 col-md-6">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="150" data-speed="1000"></h2>
-                   <p class="count-text ">Happy Students</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
+              <div style="
+                    display: flex;
+                    flex-direction: row 
+              ">
+                {% for facts in facts_blocks %}  
+                    <div class="col-lg-3 col-md-6">
+                      <div class="counter">
+                        <h2 class="timer count-title count-number" data-to="{{facts.count}}" data-speed="1000"></h2>
+                        <p class="count-text ">{{facts.title}}</p>
+                      </div>
+                    </div>
+                {% endfor %}
+              </div>  
+              {% comment %} <div class="col-lg-3 col-md-6">
                 <div class="counter">
                   <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
                   <p class="count-text ">Course Hours</p>
@@ -370,7 +381,8 @@ https://templatemo.com/tm-586-scholar
                   <h2 class="timer count-title count-number" data-to="15" data-speed="1000"></h2>
                   <p class="count-text ">Years Experience</p>
                 </div>
-              </div>
+              </div> {% endcomment %}
+
             </div>
           </div>
         </div>

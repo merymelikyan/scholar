@@ -8,7 +8,10 @@ from .models import (
     AboutTogether,
     AboutBest,
     AboutSupport,
-    AboutUs
+    AboutUs,
+    LatestCourses,
+    EventsBlocks,
+    FactsBlocks
 )
 
 def index(request):
@@ -20,7 +23,10 @@ def index(request):
           "about_together": AboutTogether.objects.all().first(),
           "about_best": AboutBest.objects.all().first(),
           "about_support": AboutSupport.objects.all().first(),
-          "about_us": AboutUs.objects.all().first()
+          "about_us": AboutUs.objects.all().first(),
+          "latest_courses": LatestCourses.objects.all().first(),
+          "events_blocks": EventsBlocks.objects.all(),
+          "facts_blocks": FactsBlocks.objects.all(),
     }      
 
     return render(request,"base.html" , context)

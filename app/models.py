@@ -116,3 +116,44 @@ class AboutUs(models.Model):
     class Meta:
         verbose_name = "About Us"
         verbose_name_plural = "About Us"     
+
+
+class LatestCourses(models.Model):
+    title= models.TextField(max_length=255)
+    description = models.TextField(max_length=255)
+    category1 = models.CharField(max_length=255, blank=True, null=True)
+    category2 = models.CharField(max_length=255, blank=True, null=True)
+    category3 = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Latest Courses"
+        verbose_name_plural = "Latest Courses"
+
+
+class EventsBlocks(models.Model):
+    category = models.CharField(max_length=255)
+    price = models.IntegerField(default=0)
+    title1 = models.CharField(max_length=255, blank=True, null=True)
+    title2 = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to="events_blocks")
+    
+    def __str__(self):
+        return self.category
+
+    class Meta:
+        verbose_name = "Events Blocks"
+        verbose_name_plural = "Events Blocks"
+
+class FactsBlocks(models.Model):
+    title= models.TextField(max_length=255)
+    count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Facts Blocks"
+        verbose_name_plural = "Facts Blocks"
