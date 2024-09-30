@@ -11,7 +11,15 @@ from .models import (
     AboutUs,
     LatestCourses,
     EventsBlocks,
-    FactsBlocks
+    FactsBlocks,
+    TeamMembers,
+    Authors,
+    Testimonial,
+    UpcomingEvents,
+    Events,
+    ContactUs,
+    Socials
+
 )
 
 def index(request):
@@ -27,6 +35,13 @@ def index(request):
           "latest_courses": LatestCourses.objects.all().first(),
           "events_blocks": EventsBlocks.objects.all(),
           "facts_blocks": FactsBlocks.objects.all(),
+          "team_members" :TeamMembers.objects.all(),
+          "authors": Authors.objects.all(),
+          "testimonial": Testimonial.objects.all().first(),
+          "upcoming_events": UpcomingEvents.objects.all().first(),
+          "events": Events.objects.all(),
+          "contact_us": ContactUs.objects.all().first(),
+          "socials": Socials.objects.all()
     }      
 
     return render(request,"base.html" , context)

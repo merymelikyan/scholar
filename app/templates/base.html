@@ -12,7 +12,7 @@
     <title>Scholar - Online School HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{% static "css/templatemo-scholar.css" %}">
     <link rel="stylesheet" href="{% static "css/owl.css" %}">
     <link rel="stylesheet" href="{% static "css/animate.css" %}">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <!--
 
 TemplateMo 586 Scholar
@@ -83,29 +83,30 @@ https://templatemo.com/tm-586-scholar
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
- 
+
   <div class="main-banner" id="top">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-banner">
-            <div class="item item-1">
-              <div class="header-text">
-                <span class="category">{{header_text.0.tag}}</span>
-                <h2>{{header_text.0.title}}</h2>
-                <p>{{header_text.0.description}}</p>
-                <div class="buttons">
-                  <div class="main-button">
-                    <a href="#">{{header_text.0.request}}</a>
-                  </div>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> {{header_text.0.quastion}}</a>
+              {% for text in header_text %}
+                <div class="item item-1">
+                  <div class="header-text">
+                    <span class="category">{{text.tag}}</span>
+                    <h2>{{text.title}}</h2>
+                    <p>{{text.description}}</p>
+                    <div class="buttons">
+                      <div class="main-button">
+                        <a href="#">{{text.request}}</a>
+                      </div>
+                      <div class="icon-button">
+                        <a href="#"><i class="fa fa-play"></i> {{text.question}}</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="item item-2">
+              {% endfor %}
+            {% comment %} <div class="item item-2">
               <div class="header-text">
                 <span class="category">{{header_text.1.tag}}</span>
                 <h2>{{header_text.1.title}}</h2>
@@ -115,7 +116,7 @@ https://templatemo.com/tm-586-scholar
                     <a href="#">{{header_text.1.request}}</a>
                   </div>
                   <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> {{header_text.1.quastion}}</a>
+                    <a href="#"><i class="fa fa-play"></i> {{header_text.1.question}}</a>
                   </div>
                 </div>
               </div>
@@ -131,12 +132,12 @@ https://templatemo.com/tm-586-scholar
                     <a href="#">{{header_text.2.request}}</a>
                   </div>
                   <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> {{header_text.2.quastion}}</a>
+                    <a href="#"><i class="fa fa-play"></i> {{header_text.2.question}}</a>
                   </div>
                 </div>
               </div>
-            </div>
-            
+            </div> {% endcomment %}
+
           </div>
         </div>
       </div>
@@ -160,6 +161,36 @@ https://templatemo.com/tm-586-scholar
               </div>
             </div>
           {% endfor %} 
+
+          {% comment %} <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <div class="icon">
+                <img src="assets/images/service-02.png" alt="short courses">
+              </div>
+              <div class="main-content">
+                <h4>Short Courses</h4>
+                <p>You can browse free templates based on different tags such as digital marketing, etc.</p>
+                <div class="main-button">
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <div class="icon">
+                <img src="assets/images/service-03.png" alt="web experts">
+              </div>
+              <div class="main-content">
+                <h4>Web Experts</h4>
+                <p>You can start learning HTML CSS by modifying free templates from our website too.</p>
+                <div class="main-button">
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div> {% endcomment %}
+
         </div>
       </div>
     </div>
@@ -351,19 +382,16 @@ https://templatemo.com/tm-586-scholar
         <div class="col-lg-12">
           <div class="wrapper">
             <div class="row">
-              <div style="
-                    display: flex;
-                    flex-direction: row 
-              ">
-                {% for facts in facts_blocks %}  
-                    <div class="col-lg-3 col-md-6">
-                      <div class="counter">
-                        <h2 class="timer count-title count-number" data-to="{{facts.count}}" data-speed="1000"></h2>
-                        <p class="count-text ">{{facts.title}}</p>
-                      </div>
+              {% for facts in facts_blocks %}  
+                
+                  <div class="col-lg-3 col-md-6">
+                    <div class="counter">
+                      <h2 class="timer count-title count-number" data-to="{{facts.count}}" data-speed="1000"></h2>
+                      <p class="count-text ">{{facts.title}}</p>
                     </div>
-                {% endfor %}
-              </div>  
+                  </div>
+            
+              {% endfor %}
               {% comment %} <div class="col-lg-3 col-md-6">
                 <div class="counter">
                   <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
@@ -393,21 +421,40 @@ https://templatemo.com/tm-586-scholar
   <div class="team section" id="team">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="team-member">
-            <div class="main-content">
-              <img src="{% static "images/member-01.jpg" %}" alt="">
-              <span class="category">UX Teacher</span>
-              <h4>Sophia Rose</h4>
-              <ul class="social-icons">
-                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-              </ul>
+        {% for member in  team_members %}
+          <div class="col-lg-3 col-md-6">
+            <div class="team-member">
+              <div class="main-content">
+                <img src="{{member.image.url}}" alt="">
+                <span class="category">{{member.position}}</span>:
+                <h4>{{member.name}}</h4>
+
+                    <ul class="social-icons">
+                      {% for social in socials %}
+                        {% comment %} <div class="{{social.title}}">
+                          <a href="{{social.url}}" target="_blank" >
+                            <i class="{{social.html_class}}"></i>
+                          </a>
+                        </div> {% endcomment %}
+                        <li>
+                          <a href="{{social.url}}" target="_blank" title="{{social.title}}">
+                            <i class="{{social.html_class}}"></i>
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                
+                {% comment %} <ul class="social-icons">
+                  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                </ul> {% endcomment %}
+                
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
+
+        {% comment %} <div class="col-lg-3 col-md-6">
           <div class="team-member">
             <div class="main-content">
               <img src="{% static "images/member-02.jpg" %}" alt="">
@@ -448,28 +495,37 @@ https://templatemo.com/tm-586-scholar
               </ul>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
+
+        {% endfor %}  
+       
       </div>
     </div>
   </div> 
+  
+
 
   <div class="section testimonials">
     <div class="container">
       <div class="row">
         <div class="col-lg-7">
           <div class="owl-carousel owl-testimonials">
-            <div class="item">
-              <p>“Please tell your friends or collegues about TemplateMo website. Anyone can access the website to download free templates. Thank you for visiting.”</p>
-              <div class="author">
-              <img src="{% static "images/testimonial-author.jpg" %}" alt="">
-                <span class="category">Full Stack Master</span>
-                <h4>Claude David</h4>
+            {% for author in authors %}
+              <div class="item">
+                <p>{{author.description}}</p>
+                <div class="author">
+                  <img src="{{author.image.url}}" alt="">
+                  
+                  <span class="category">{{author.position}}</span>
+                  <h4>{{author.name}}</h4>
+                </div>
               </div>
-            </div>
-            <div class="item">
+            {% endfor %}
+            
+            {% comment %} <div class="item">
               <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid.”</p>
               <div class="author">
-                <img src="{% static "images/testimonial-author.jpg" %}" alt="">
+                <img src="assets/images/testimonial-author.jpg" alt="">
                 <span class="category">UI Expert</span>
                 <h4>Thomas Jefferson</h4>
               </div>
@@ -477,18 +533,19 @@ https://templatemo.com/tm-586-scholar
             <div class="item">
               <p>“Scholar is free website template provided by TemplateMo for educational related websites. This CSS layout is based on Bootstrap v5.3.0 framework.”</p>
               <div class="author">
-                <img src="{% static "images/testimonial-author.jpg" %}" alt="">
+                <img src="assets/images/testimonial-author.jpg" alt="">
                 <span class="category">Digital Animator</span>
                 <h4>Stella Blair</h4>
               </div>
-            </div>
+            </div> {% endcomment %}
+
           </div>
         </div>
         <div class="col-lg-5 align-self-center">
           <div class="section-heading">
-            <h6>TESTIMONIALS</h6>
-            <h2>What they say about us?</h2>
-            <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio, templatemo gallery, templatemo blue color, etc.</p>
+            <h6>{{testimonial.tag}}</h6>
+            <h2>{{testimonial.title}}</h2>
+            <p>{{testimonial.description}}</p>
           </div>
         </div>
       </div>
@@ -500,48 +557,52 @@ https://templatemo.com/tm-586-scholar
       <div class="row">
         <div class="col-lg-12 text-center">
           <div class="section-heading">
-            <h6>Schedule</h6>
-            <h2>Upcoming Events</h2>
+            <h6>{{upcoming_events.tag}}</h6>
+            <h2>{{upcoming_events.title}}</h2>
           </div>
         </div>
-        <div class="col-lg-12 col-md-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-3">
-                <div class="image">
-                  <img src="{% static "images/event-01.jpg" %}" alt="">
+
+        {% for event in events %}
+          <div class="col-lg-12 col-md-6">
+            <div class="item">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="image">
+                    <img src="{{event.image.url}}" alt="">
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-9">
-                <ul>
-                  <li>
-                    <span class="category">Web Design</span>
-                    <h4>UI Best Practices</h4>
-                  </li>
-                  <li>
-                    <span>Date:</span>
-                    <h6>16 Feb 2036</h6>
-                  </li>
-                  <li>
-                    <span>Duration:</span>
-                    <h6>22 Hours</h6>
-                  </li>
-                  <li>
-                    <span>Price:</span>
-                    <h6>$120</h6>
-                  </li>
-                </ul>
-                <a href="#"><i class="fa fa-angle-right"></i></a>
+                <div class="col-lg-9">
+                  <ul>
+                    <li>
+                      <span class="category">{{event.tag}}</span>
+                      <h4>{{event.title}}</h4>
+                    </li>
+                    <li>
+                      <span>Date:</span>
+                      <h6>{{event.data}}</h6>
+                    </li>
+                    <li>
+                      <span>Duration:</span>
+                      <h6>{{event.duration}}</h6>
+                    </li>
+                    <li>
+                      <span>Price:</span>
+                      <h6>{{event.price}}</h6>
+                    </li>
+                  </ul>
+                  <a href="#"><i class="{{event.html_class}}"></i></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-12 col-md-6">
+         {% endfor %}
+
+        {% comment %} <div class="col-lg-12 col-md-6">
           <div class="item">
             <div class="row">
               <div class="col-lg-3">
                 <div class="image">
-                  <img src="{% static "images/event-02.jpg" %} alt="">
+                  <img src="assets/images/event-02.jpg" alt="">
                 </div>
               </div>
               <div class="col-lg-9">
@@ -573,7 +634,7 @@ https://templatemo.com/tm-586-scholar
             <div class="row">
               <div class="col-lg-3">
                 <div class="image">
-                  <img src="{% static "images/event-03.jpg" %}" alt="">
+                  <img src="assets/images/event-03.jpg" alt="">
                 </div>
               </div>
               <div class="col-lg-9">
@@ -599,7 +660,8 @@ https://templatemo.com/tm-586-scholar
               </div>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
+
       </div>
     </div>
   </div>
@@ -609,14 +671,14 @@ https://templatemo.com/tm-586-scholar
       <div class="row">
         <div class="col-lg-6  align-self-center">
           <div class="section-heading">
-            <h6>Contact Us</h6>
-            <h2>Feel free to contact us anytime</h2>
-            <p>Thank you for choosing our templates. We provide you best CSS templates at absolutely 100% free of charge. You may support us by sharing our website to your friends.</p>
+            <h6>{{contact_us.tag}}</h6>
+            <h2>{{contact_us.title}}</h2>
+            <p>{{contact_us.description}}</p>
             <div class="special-offer">
-              <span class="offer">off<br><em>50%</em></span>
-              <h6>Valide: <em>24 April 2036</em></h6>
-              <h4>Special Offer <em>50%</em> OFF!</h4>
-              <a href="#"><i class="fa fa-angle-right"></i></a>
+              <span class="offer">off<br><em>{{contact_us.offer_percent}}</em></span>
+              <h6>Valide: <em>{{contact_us.valide}}</em></h6>
+              <h4>Special Offer <em>{{contact_us.offer_percent}}</em> OFF!</h4>
+              <a href="#"><i class="{{contact_us.html_class}}"></i></a>
             </div>
           </div>
         </div>
@@ -669,5 +731,5 @@ https://templatemo.com/tm-586-scholar
   <script src="{% static "js/counter.js" %}"></script>
   <script src="{% static "js/custom.js" %}"></script>
 
-  </body>
+  </body> 
 </html>

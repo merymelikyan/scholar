@@ -12,7 +12,14 @@ from .models import (
     AboutUs,
     LatestCourses,
     EventsBlocks,
-    FactsBlocks
+    FactsBlocks,
+    TeamMembers,
+    Authors,
+    Testimonial,
+    UpcomingEvents,
+    Events,
+    ContactUs,
+    Socials
     ) 
 
 admin.site.register(HeaderText)
@@ -26,3 +33,10 @@ admin.site.register(AboutUs)
 admin.site.register(LatestCourses)
 admin.site.register(EventsBlocks)
 admin.site.register(FactsBlocks)
+admin.site.register(TeamMembers)
+admin.site.register(Authors)
+admin.site.register(Testimonial)
+admin.site.register(UpcomingEvents)
+admin.site.register(Events)
+admin.site.register(ContactUs)
+admin.site.register(Socials)

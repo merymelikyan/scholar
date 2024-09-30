@@ -157,3 +157,102 @@ class FactsBlocks(models.Model):
     class Meta:
         verbose_name = "Facts Blocks"
         verbose_name_plural = "Facts Blocks"
+
+
+class TeamMembers(models.Model):
+    name = models.CharField(max_length=45)
+    position = models.CharField(max_length=60)
+    image = models.ImageField(upload_to="team_members")
+  
+    def __str__(self):
+        return f"{self.name}{self.position}"
+
+    class Meta:
+        verbose_name = "Team Members"
+        verbose_name_plural = "Team Members"
+
+class Authors(models.Model):
+    name = models.CharField(max_length=45)
+    position = models.CharField(max_length=60)
+    description = models.TextField(max_length=255)
+    image = models.ImageField(upload_to="authors")
+      
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Authors"
+        verbose_name_plural = "Authors"
+
+
+
+class Testimonial(models.Model):
+    tag = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    description = models.TextField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.tag
+      
+    class Meta:
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"
+
+
+class UpcomingEvents(models.Model):
+    tag = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+  
+    def __str__(self):
+        return self.tag
+      
+    class Meta:
+        verbose_name = "Upcoming Events"
+        verbose_name_plural = "Upcoming Events"
+
+
+class Events(models.Model):
+    tag = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to="events")
+    data = models.CharField(max_length=50, null=True, blank=True, help_text="FontAwesome icon")
+    duration = models.CharField(max_length=10, null=True, blank=True)
+    price = models.CharField(max_length=50, null=True, blank=True)
+    html_class = models.CharField(max_length=55)
+
+    def __str__(self):
+        return self.tag
+      
+    class Meta:
+        verbose_name = "Events"
+        verbose_name_plural = "Events"
+
+
+class ContactUs(models.Model):
+    tag = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    description = models.TextField(max_length=255, blank=True, null=True)
+    offer_percent = models.CharField(max_length=50, null=True, blank=True)
+    valide = models.CharField(max_length=50, null=True, blank=True)
+    html_class = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.tag
+      
+
+    class Meta:
+        verbose_name = "Contact Us"
+        verbose_name_plural = "Contact Us"
+
+
+class Socials(models.Model):
+    title = models.CharField(max_length=50)
+    url = models.URLField(max_length=255, blank=True)
+    html_class = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Social"
+        verbose_name_plural = "Socials"
