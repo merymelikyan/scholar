@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}    
+  
+  
+  {% block courses_template %}
+
+      <section class="section courses" id="courses" >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <div class="section-heading">
+                <h6>{{latest_courses.title}}</h6>
+                <h2>{{latest_courses.description}}</h2>
+              </div>
+            </div>
+          </div>
+          <ul class="event_filter">
+            <li>
+              <a class="is_active" href="#!" data-filter="*">Show All</a>
+            </li>
+            <li>
+              <a href="#!" data-filter=".design">{{latest_courses.category1}}</a>
+            </li>
+            <li>
+              <a href="#!" data-filter=".development">{{latest_courses.category2}}t</a>
+            </li>
+            <li>
+              <a href="#!" data-filter=".wordpress">{{latest_courses.category3}}</a>
+            </li>
+          </ul>
+          <div class="row event_box">
+            
+            {% for e in events_blocks %}  
+              <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design">
+                <div class="events_item">
+                  <div class="thumb">
+                    <a href="#"><img src="{{e.image.url}}" alt=""></a>
+                    <span class="category">{{e.category}}</span>
+                    <span class="price"><h6><em>$</em>{{e.price}}</h6></span>
+                  </div>
+                  <div class="down-content">
+                    <span class="author">{{e.title1}}</span>
+                    <h4>{{e.title2}}</h4>
+                  </div>
+                </div>
+              </div>
+            {%endfor %}
+          
+          </div>
+        </div>
+      </section>
+
+  {% endblock %}

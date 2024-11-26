@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}    
+  
+  
+  {% block team_template %}
+      <div class="team section" id="team">
+        <div class="container">
+          <div class="row">
+            {% for member in  team_members %}
+              <div class="col-lg-3 col-md-6">
+                <div class="team-member">
+                  <div class="main-content">
+                    <img src="{{member.image.url}}" alt="">
+                    <span class="category">{{member.position}}</span>:
+                    <h4>{{member.name}}</h4>
+
+                        <ul class="social-icons">
+                          {% for social in socials %}
+                            
+                            <li>
+                              <a href="{{social.url}}" target="_blank" title="{{social.title}}">
+                                <i class="{{social.html_class}}"></i>
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                    
+                  </div>
+                </div>
+              </div>
+
+            {% endfor %}  
+          
+          </div>
+        </div>
+      </div> 
+  {% endblock %}
